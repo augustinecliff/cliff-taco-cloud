@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(180, 105, 6, 0.874);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(227, 198, 128);
+}
+.login_box {
+    background-image: url('../images/login-form2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 18px;
+    
+    height: 500px;
+    width: 600px;
+}
+.box_title {
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(180, 105, 6, 0.874);
+}

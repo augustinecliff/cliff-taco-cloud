@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Taco Cloud</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+    <style>
+        body {
+            background-color: rgba(20, 19, 18, 0.2);
+        }
+        .head {
+            background-color: rgb(63, 54, 54);
+            color: rgb(235, 204, 148);
+            padding: 5px 20px 5px 5px;
+            text-align: left;
+            border-color: black;
+        }
+        .headValue {
+            padding: 5px;
+            border-color: black;
+            text-align: center;
+            color: rgb(41, 34, 34);
+        }
+        .table {
+            padding: 20%;
+            border-style: outset;
+            border-collapse: collapse;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .ingrids {
+            border-style: outset;
+            border-color: black;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 0;
+            color: rgb(235, 204, 148);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h2>Orders by : <span th:text="${user.getFullname()}"></span></h2>
+<ul style="border-color: saddlebrown; color: green" >
+    <li>Users name  : <span th:text="${user.getFullname()}"></span></li>
+    <li>Authorities : <span th:text="${user.getAuthorities()}"></span></li>
+    <li>Role : <span th:text="${user.getRole()}"></span></li>
+    <li>phone Number: <span th:text="${user.getPhoneNumber()}"></span></li>
+
+</ul>
+<table class="table">
+        <thead>
+        <tr>
+            <th class="head">Delivery Name</th>
+            <th class="head">Delivery City</th>
+            <th class="head">Date</th>
+            <th class="head">Tacos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td class="headValue" th:text="${order.deliveryName}">NAME</td>
+            <td class="headValue"  th:text="${order.deliveryCity}">DATE</td>
+            <td class="headValue"  th:text="${order.placedAt}">DATE</td>
+            <td>
+                <table class="table">
+                    <tbody th:each="taco : ${order.tacos}">
+                        <tr class="headValue" th:text="${taco.name}"></tr>
+                        <tr class = "ingrids">
+                            <td>
+                            <ul>
+                                <li th:each="ingredient : ${taco.ingredients}" th:text="${ingredient.name}">INGREDIENT</li>
+                            </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout" style="font-size: 20px;margin-top:4px; background-color: black;color: white"/>
+</form>
+</body>
+
+</html>

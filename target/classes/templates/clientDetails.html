@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <title>Taco Order Details</title>
+        <style>
+            body {
+                background-color: rgba(20, 19, 18, 0.2);
+            }
+            .head {
+                background-color: rgb(63, 54, 54);
+                color: rgb(235, 204, 148);
+                padding: 5px 20px 5px 5px;
+                text-align: left;
+            }
+            .headValue {
+                padding: 5px;
+                text-align: center;
+                color: rgb(41, 34, 34);
+            }
+            .table {
+                padding: 20%;
+                border-style: outset;
+                border-collapse: collapse;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            .ingrids {
+                border-style: outset;
+                border-color: black;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                margin-top: 0;
+                color: rgb(235, 204, 148);
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Orders By (name of user)</h2>
+
+        <table class="table">
+            <tr>
+                <th class="head">
+                    Client Name   :
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryName}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    Taco Name   :
+                </th>
+                <td class="headValue" th:text="${clientIngreds.name}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    DeliveryStreet:
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryStreet}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    DeliveryCity  :
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryCity}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    DeliveryState :
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryState}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    DeliveryZip   :
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryZip}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    ccNumber      :
+                </th>
+                <td class="headValue" th:text="${clientDetails.deliveryZip}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    ccNumber  :
+                </th>
+                <td class="headValue" th:text="${clientDetails.ccNumber}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    ccExpiration  :
+                </th>
+                <td class="headValue" th:text="${clientDetails.ccExpiration}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    ccCVV         :
+                </th>
+                <td class="headValue" th:text="${clientDetails.ccCVV}">
+
+                </td>
+            </tr>
+            <tr>
+                <th class="head">
+                    placedAt      :
+                </th>
+                <td class="headValue" th:text="${clientDetails.placedAt}">
+
+                </td>
+            </tr>
+        </table>
+        <h3>Ingredients :</h3>
+        <table class="ingrids">
+                <tr class="headValue" th:each="ing : ${ingredientList}">
+                    <td th:text="${ing.name}"></td>
+                </tr>
+        </table>
+
+        <a th:href="@{/design}"  style="color: white">
+            <button style="font-size: 20px;margin-top:29px; background-color: black;color: white">Create a new taco </button>
+        </a>
+        <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout" style="font-size: 20px;margin-top:4px; background-color: black;color: white"/>
+        </form>
+    </body>
+
+</html>

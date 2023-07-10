@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taco-cloud-deploy
+  labels:
+    app: taco-cloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: taco-cloud
+  template:
+    metadata:
+      labels:
+        app: taco-cloud
+    spec:
+      containers:
+        - name: cliff-tacos-container
+          image: augustinecliff/clifftacocloudrepo:latest
